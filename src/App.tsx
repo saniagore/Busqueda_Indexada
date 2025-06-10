@@ -55,36 +55,40 @@ const ProductList = () => {
   const filteredProducts = search ? searchProducts(search) : products;
 
   return (
-    <div>
-      <div className="header">
-          <h1>Product List</h1>
-          <input
-            type="text"
-            placeholder="Search products..."
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-      </div>
-
-      <div className="product-grid">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="product-card">
-            <img 
-              src={product.thumbnail} 
-              alt={product.title} 
-              width={150} 
-              height={150} 
-              style={{ objectFit: 'cover' }} 
+    <>
+      <nav className="navbar">
+        <div className="header">
+            <h1>Product List</h1>
+            <input
+              type="text"
+              placeholder="Search products..."
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
             />
-            <div className='product-info'>
-              <h3>{product.title}</h3>
-              <p>${product.price.toFixed(2)}</p>
-              <p>{product.description.substring(0, 50)}...</p>
+        </div>
+      </nav>
+      
+      <div>
+        <div className="product-grid">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              <img 
+                src={product.thumbnail} 
+                alt={product.title} 
+                width={150} 
+                height={150} 
+                style={{ objectFit: 'cover' }} 
+              />
+              <div className='product-info'>
+                <h3>{product.title}</h3>
+                <p>${product.price.toFixed(2)}</p>
+                <p>{product.description.substring(0, 50)}...</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
