@@ -6,7 +6,6 @@ const buildSearchIndex = (products: Product[]): SearchIndex => {
     products.forEach(product => {
         const text = `${product.title.toLowerCase()} ${product.description.toLowerCase()}`;
         const words = text.split(/\W+/).filter(word => word.length > 0);
-
         words.forEach(word => {
             if (!index[word]) {
                 index[word] = [];
